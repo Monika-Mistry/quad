@@ -1,50 +1,41 @@
----
 version: '3.7'
 services:
     nginx:
-      container_name: nginx
-      image: nginx:latest
-      volumes:
-      - type: bind
-        source: ./nginx/nginx.conf
-        target: /etc/nginx/nginx.conf
-      ports:
-      - target: 80
-        published: 80
-        protocol: tcp
-      depends_on:
-        - client
-        - server
+        container_name: nginx
+        image: nginx:latest
+        volumes:
+            - {type: bind, source: ./nginx/nginx.conf, target: /etc/nginx/nginx.conf}
+        ports:
+            - {target: 80, published: 80, protocol: tcp}
+        depends_on:
+            - client
+            - server
     server:
-      image: docker.io/qamattjohunt/playground:latest
-      build:
-        context: ./server
-        dockerfile: Dockerfile
-      ports:
-      - "8080:8080"
+        image: docker.io/qamattjohunt/playground:latest
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        ports:
+            - '8080:8080'
     client:
-      image: docker.io/qamattjohunt/react:latest
-      build:
-        context: ./client
-        dockerfile: Dockerfile
-      ports:
-      - "3000:3000"
-      environment:
-      - REACT_APP_SERVICE_HOST=${REACT_APP_SERVICE_HOST}
+        image: docker.io/qamattjohunt/react:latest
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        ports:
+            - '3000:3000'
+        environment:
+            - REACT_APP_SERVICE_HOST=${REACT_APP_SERVICE_HOST}
     mongo:
-      image: mongo
-      ports:
-      - "27017:27017"
+        image: mongo
+        ports:
+            - '27017:27017'
     mongo-seed:
-      image: fvilers/mongo-seed:1.0.0
-      environment:
-      - MONGO_HOST=mongo
-      - MONGO_PORT=27017
-      volumes:
-      - ./data:/data
-      command:
-      - "mongoimport --host mongo --port 27017 --db test --mode upsert --type json --file /data/account.json --jsonArray"
-
-  
-...
-
+        image: fvilers/mongo-seed:1.0.0
+        environment:
+            - MONGO_HOST=mongo
+            - MONGO_PORT=27017
+        volumes:
+            - ./data:/data
+        command:
+            - 'mongoimport --host mongo --port 27017 --db test --mode upsert --type json --file /data/account.json --jsonArray'
