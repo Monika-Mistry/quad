@@ -15,15 +15,15 @@ services:
         build:
             context: ./server
             dockerfile: Dockerfile
-        ports:
-            - '8081:8080'
+        expose:
+            - '8080'
     client:
         image: docker.io/qamattjohunt/react:latest
         build:
             context: ./client
             dockerfile: Dockerfile
-        ports:
-            - '3000:3000'
+        expose:
+            - '3000'
         environment:
             - REACT_APP_SERVICE_HOST=${REACT_APP_SERVICE_HOST}
     mongo:
