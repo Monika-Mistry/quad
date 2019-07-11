@@ -11,14 +11,14 @@ services:
             - client
             - server
     server:
-        image: docker.io/qamattjohunt/playground:latest
+        image: localhost:5000/qamattjohunt/playground:latest
         build:
             context: ./server
             dockerfile: Dockerfile
         expose:
             - '8080'
     client:
-        image: docker.io/qamattjohunt/react:latest
+        image: localhost:5000/qamattjohunt/react:latest
         build:
             context: ./client
             dockerfile: Dockerfile
