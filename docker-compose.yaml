@@ -10,6 +10,7 @@ services:
         depends_on:
             - client
             - server
+            - mongo
     server:
         image: localhost:5000/qamattjohunt/playground:latest
         build:
@@ -40,6 +41,6 @@ services:
         command:
             - 'mongoimport --host mongo --port 27017 --db test --mode upsert --type json --file /data/account.json --jsonArray'
         deploy:
-            restart_policy: {max_attempts: 0, condition: on-failure}
+            restart_policy: {max_attempts: 0}
         depends_on:
             - mongo
