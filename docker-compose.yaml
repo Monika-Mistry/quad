@@ -41,3 +41,5 @@ services:
             - 'mongoimport --host mongo --port 27017 --db test --mode upsert --type json --file /data/account.json --jsonArray'
         deploy:
             restart_policy: {max_attempts: 0}
+        depends_on:
+            - mongo
