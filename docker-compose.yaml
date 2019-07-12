@@ -44,3 +44,4 @@ services:
             restart_policy: {max_attempts: 0}
         depends_on:
             - mongo
+        restart: on-failure
