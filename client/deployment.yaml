@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: client
-        image: bobcrutchley/quad-client
+        image: docker.io/qamattjohunt/playground:latest
         ports:
         - containerPort: 3000
