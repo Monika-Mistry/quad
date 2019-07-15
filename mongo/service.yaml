@@ -5,7 +5,6 @@ metadata:
 spec:
   selector:
     app: mongo
-      image: mongo:latest
   ports:
     - protocol: TCP
       port: 27017
