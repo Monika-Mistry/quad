@@ -15,7 +15,11 @@ spec:
           value: "27017"
         command: ["/bin/sh", "-c"]
         args:
-        - echo hello;
-          echo world;
-        #command: ["mongoimport", "--host mongo", "--port 27017", "--db test", "--mode upsert", "--type json", "--file /data/account.json", "--jsonArray"]
+        - echo "Making directory /data";
+          mkdir /data;
+          echo "Downloading account.json";
+          curl -O "https://github.com/Monika-Mistry/quad/blob/master/data/account.json";
+          echo "Populating database";
+          mongoimport --host mongo --port 27017 --db test --mode upsert --type json --file /data/account.json --jsonArray;
+          echo Done;
       restartPolicy: OnFailure
