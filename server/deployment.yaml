@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: localhost:5000/mpmistry/playground:latest
+        image: docker.io/mpmistry/playground:latest
         ports:
         - containerPort: 8080
         env:
