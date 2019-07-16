@@ -22,7 +22,7 @@ spec:
           apk add curl;
           echo "Downloading account.json";
           cd /data;
-          curl -O "https://github.com/Monika-Mistry/quad/blob/master/data/account.json";
+          curl -O "https://raw.githubusercontent.com/Monika-Mistry/quad/master/data/account.json";
           echo "Populating database";
           mongoimport --host mongo --port 27017 --db test --mode upsert --type json --file /data/account.json --jsonArray;
           echo Done;
