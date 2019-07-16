@@ -15,7 +15,6 @@ spec:
         value: "27017"
       command: ["mongoimport", "--host mongo", "--port 27017", "--db test", "--mode upsert", "--type json", "--file /data/account.json", "--jsonArray"]
       volumeMounts:
-        # directory location on container
         - mountPath: "/data"
           name: data
   restartPolicy: OnFailure
