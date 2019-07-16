@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
     - name: mongo-seed
-      image: fvilers/mongo-seed:1.0.0:latest
+      image: fvilers/mongo-seed:1.0.0
       env:
       - name: MONGO_HOST
         value: "mongo"
