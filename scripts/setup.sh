@@ -1,3 +1,4 @@
+kubectl apply -f jenkins/
 kubectl apply -f mongo/
 kubectl apply -f server/
 kubectl apply -f client/
