@@ -19,7 +19,7 @@ function RoutingExample() {
             <Link to="/Unit">How to override from the Child/Parent</Link>
           </button>
         
-<p>Hello World!</p>
+<p>Josh is a stinky boi.</p>
 
         <Route exact path="/" />
         <Route path="/Unit" component={Unit} />
