@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mongo-seed
+spec:
+  template:
+    spec:
+      containers:
+      - name: mongo-seed
+        image: fvilers/mongo-seed:1.0.0:latest
+        env:
+        - name: MONGO_HOST
+          value: "mongo"
+        - name: MONGO_PORT
+          value: "27017"
+        command: ["/bin/sh", "-c"]
+        args:
+        - echo hello;
+          echo world;
+        #command: ["mongoimport", "--host mongo", "--port 27017", "--db test", "--mode upsert", "--type json", "--file /data/account.json", "--jsonArray"]
+      restartPolicy: OnFailure
