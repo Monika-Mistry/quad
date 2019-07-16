@@ -1,16 +1,14 @@
 pipeline{
         agent any
         stages{
-                stage('---build-client---'){
+                stage('---build---'){
                         steps{
-                                sh "sudo docker build --tag mpmistry/react:latest -f ./client/Dockerfile ."
+                                sh "sudo docker-compose build server client"
+                                sh "sudo docker tag localhost:5000/mpmistry/playground:latest mpmistry/playground:latest"
+                                sh "sudo docker tag localhost:5000/mpmistry/react:latest mpmistry/react:latest"
                         }
                 }
-                stage('---build-server---'){
-                        steps{
-                                sh "sudo docker build --tag mpmistry/playground:latest -f ./server/Dockerfile ."
-                        }
-                }
+
                 stage('---push-dockerhub---'){
                         steps{
                                 sh "sudo docker push mpmistry/playground:latest"
