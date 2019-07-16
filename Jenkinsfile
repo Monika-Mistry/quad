@@ -3,25 +3,24 @@ pipeline{
         stages{
                 stage('---setup---'){
                         steps{
-                                sh "tag=$(git rev-parse HEAD)"
-                                sh "sed -i "s/{{TAG}}/${tag}/g" ./client/deployment.yaml"
-                                sh "sed -i "s/{{TAG}}/${tag}/g" ./server/deployment.yaml"
+                                sh "kubectl patch deployment server -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
+                                sh "kubectl patch deployment client -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
                         }
                 }
                 stage('---build-client---'){
                         steps{
-                                sh "sudo docker build --tag mpmistry/react:${tag} -f ./client/Dockerfile ."
+                                sh "sudo docker build --tag mpmistry/react:latest -f ./client/Dockerfile ."
                         }
                 }
                 stage('---build-server---'){
                         steps{
-                                sh "sudo docker build --tag mpmistry/playground:${tag} -f ./server/Dockerfile ."
+                                sh "sudo docker build --tag mpmistry/playground:latest -f ./server/Dockerfile ."
                         }
                 }
                 stage('---push-dockerhub---'){
                         steps{
-                                sh "sudo docker push mpmistry/playground:${tag}"
-                                sh "sudo docker push mpmistry/react:${tag}"
+                                sh "sudo docker push mpmistry/playground:latest"
+                                sh "sudo docker push mpmistry/react:latest"
                         }
                 }
                 stage('---update---'){
