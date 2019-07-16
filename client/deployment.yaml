@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: client
-        image: docker.io/mpmistry/react:latest
+        image: docker.io/mpmistry/react:{{TAG}}
         imagePullPolicy: "Always"
         ports:
         - containerPort: 3000
