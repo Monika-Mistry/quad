@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: client
-        image: localhost:5000/mpmistry/react:latest
+        image: docker.io/mpmistry/react:latest
         ports:
         - containerPort: 3000
