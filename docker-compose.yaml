@@ -11,14 +11,14 @@ services:
             - client
             - server
     server:
-        image: localhost:5000/qamattjohunt/playground:latest
+        image: localhost:5000/mpmistry/playground:latest
         build:
             context: ./server
             dockerfile: Dockerfile
         ports:
             - {target: 8080, protocol: tcp}
     client:
-        image: localhost:5000/qamattjohunt/react:latest
+        image: localhost:5000/mpmistry/react:latest
         build:
             context: ./client
             dockerfile: Dockerfile
