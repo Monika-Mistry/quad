@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: client
-        image: docker.io/qamattjohunt/react:latest
+        image: docker.io/mpmistry/react:latest
         ports:
         - containerPort: 3000
