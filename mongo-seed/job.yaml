@@ -18,8 +18,8 @@ spec:
         - echo "Making directory /data";
           mkdir /data;
           echo "Installing curl";
-          apt-get update;
-          apt-get install curl;
+          apk update;
+          apk add curl;
           echo "Downloading account.json";
           curl -O "https://github.com/Monika-Mistry/quad/blob/master/data/account.json";
           echo "Populating database";
