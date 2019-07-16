@@ -13,7 +13,7 @@ spec:
         value: "mongo"
       - name: MONGO_PORT
         value: "27017"
-      command: ["mongoimport", "--host mongo", "--port 27017", "--db test", "--mode upsert", "--type json", "--file /data/account.json", "--jsonArray"
+      command: ["mongoimport", "--host mongo", "--port 27017", "--db test", "--mode upsert", "--type json", "--file /data/account.json", "--jsonArray"]
   restartPolicy: OnFailure
   volumes:
   - ./data:/data
